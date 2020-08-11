@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.http import JsonResponse
 
+from DRF.models import Employee
+
 
 def employeeView(request):
     emp = {
@@ -9,4 +11,7 @@ def employeeView(request):
         'salary': 1000000
     }
 
-    return JsonResponse(emp)
+    data = Employee.objects.all();
+    response = {'employees': list(data.values('name', 'sal'))}
+
+    return JsonResponse(response)
