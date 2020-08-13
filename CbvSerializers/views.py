@@ -5,7 +5,7 @@ from rest_framework import status
 from rest_framework.views import APIView
 from django.http import Http404
 
-from rest_framework import generics,mixins
+from rest_framework import generics, mixins
 from rest_framework import viewsets
 from rest_framework.pagination import LimitOffsetPagination
 
@@ -15,18 +15,18 @@ class StudentViewSet(viewsets.ModelViewSet):
     serializer_class = StudentSerializer
     pagination_class = LimitOffsetPagination
 
-
-class StudentList(generics.ListCreateAPIView):
+#Generic
+"""class StudentList(generics.ListCreateAPIView):
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
 
 
 class StudentDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Student.objects.all()
-    serializer_class = StudentSerializer
+    serializer_class = StudentSerializer"""
 
-
-class StudentList(mixins.ListModelMixin, mixins.CreateModelMixin, generics.GenericAPIView):
+#Mixins
+"""class StudentList(mixins.ListModelMixin, mixins.CreateModelMixin, generics.GenericAPIView):
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
 
@@ -48,9 +48,11 @@ class StudentDetail(mixins.RetrieveModelMixin, mixins.UpdateModelMixin, mixins.D
         return self.update(request, pk)
 
     def delete(self, request, pk):
-        return self.destroy(request, pk)
+        return self.destroy(request, pk)"""
 
 
+#Standard Class Based Views
+"""
 class StudentList(APIView):
 
     def get(self, request):
@@ -91,3 +93,4 @@ class StudentDetail(APIView):
         student = self.get_object(pk)
         student.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+"""

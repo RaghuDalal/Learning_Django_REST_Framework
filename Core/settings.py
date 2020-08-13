@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'DRF',
     'serializers',
     'CbvSerializers',
+    'nestedSerializers',
 ]
 
 MIDDLEWARE = [

@@ -6,4 +6,5 @@ urlpatterns = [
     path('employees/', include('DRF.urls')),
     path('students/', include('serializers.urls')),
     path('cbv/', include('CbvSerializers.urls')),
+    path('ns/', include('nestedSerializers.urls')),
 ]
